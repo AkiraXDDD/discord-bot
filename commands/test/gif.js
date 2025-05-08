@@ -4,8 +4,10 @@ const API_KEY = process.env.API;
 const getColors = require('get-image-colors');
 const axios = require('axios');
 const sharp = require('sharp');
+const { cooldown } = require("../utility/echo");
 
 module.exports = {
+    cooldown: 5,
     data: new SlashCommandBuilder()
         .setName('gif')
         .setDescription('Sends a [option] gif')
