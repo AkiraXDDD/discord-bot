@@ -2,12 +2,14 @@ const { SlashCommandBuilder } = require("discord.js");
 const wait = require('node:timers/promises').setTimeout;
 
 module.exports = {
+    cooldown: 5,
     data: new SlashCommandBuilder()
         .setName('ping')
-        .setDescription('Replies with Pong and Pong again after a few secs!'),
+        .setDescription('Check bot ping!'),
     async execute(interaction) {
-        await interaction.reply('Pong!');
-        await wait(2_000);
-        await interaction.editReply('Pong again!')
+        const check = await interaction.reply({ content: 'Hm....', fetchReply: true});
+        const ping = check.createdTimestamp - interaction.createdTimestamp;
+        
+        await interaction.editReply(`Pong is ${ping} ms!`);
     },
 };

@@ -63,11 +63,11 @@ module.exports = {
             const user2 = interaction.options.getUser('opponent');
 
             if (user.id == user2.id) {
-                return interaction.reply({ content: "You can't challenge yourself!", ephemeral: true});
+                return interaction.reply({ content: "You can't challenge yourself!", flags: MessageFlags.Ephemeral});
             }
 
             if (user2.bot) {
-                return interaction.reply({ content: "You can't challenge a bot!", ephemeral: true });
+                return interaction.reply({ content: "You can't challenge a bot!", flags: MessageFlags.Ephemeral});
             }
             
             const challengeEmbed = new EmbedBuilder()
