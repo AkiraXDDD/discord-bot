@@ -10,11 +10,13 @@ const client = new Client({
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.MessageContent,
+		GatewayIntentBits.GuildVoiceStates
     ]
 });
 
 client.cooldowns = new Collection();
 client.commands = new Collection();
+client.queue = new Map();
 const foldersPath = path.join(__dirname, 'commands');
 const commandFolders = fs.readdirSync(foldersPath);
 

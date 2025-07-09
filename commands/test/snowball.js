@@ -2,6 +2,7 @@ const { SlashCommandBuilder, MessageFlags } = require('discord.js');
 const db = require('../../db');
 
 module.exports = {
+    cooldown: 30,
     data: new SlashCommandBuilder()
         .setName('snowball')
         .setDescription('Snowball Command!')
@@ -48,9 +49,9 @@ module.exports = {
                 const throwStats = db.prepare(`SELECT thrown FROM snowball_stats WHERE user_id  = ?`).get(user.id);
                 const hitStats = db.prepare(`SELECT hit FROM snowball_stats WHERE user_id = ?`).get(target.id);
 
-                return interaction.reply(`<@${user.id}> chucked a big fat snowball at <@${target.id}>!\n` +
+                return interaction.reply(`<@${user.id}> chucked a big fat snowball at <@${target.id}>! <a:snowball_throw:1392166700744441906>\n` +
                     `${user.username} has thrown ${throwStats.thrown} snowballs!\n` +
-                    `${target.username} has hit ${hitStats.hit} times!`
+                    `${target.username} has been hit by snowballs ${hitStats.hit} times!`
                 );
             }
             
