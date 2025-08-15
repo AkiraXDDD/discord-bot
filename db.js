@@ -7,8 +7,26 @@ db.prepare(`
         thrown INTEGER DEFAULT 0,
         hit INTEGER DEFAULT 0,
         snowball INTEGER DEFAULT 0,
-        coin INTEGER DEFAULT 0
-    )
-`).run();
+        coin INTEGER DEFAULT 0,
+        response TEXT DEFAULT 'Hey, That hurts!'
+    )`
+).run();
+
+db.prepare(
+    `CREATE TABLE IF NOT EXISTS responses (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        quote TEXT NOT NULL,
+        price INTEGER NOT NULL
+    )`
+).run();
+
+db.prepare(
+    `CREATE TABLE IF NOT EXISTS user_responses (
+        user_id TEXT,
+        response_id INTEGER,
+        PRIMARY KEY (user_id, response_id)
+    )`
+).run();
 
 module.exports = db;

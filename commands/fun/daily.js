@@ -11,7 +11,7 @@ module.exports = {
         const data = db.prepare('SELECT * FROM snowball WHERE user_id = ?').get(id);
 
         if (!data) {
-            return interaction.reply(`Hey <@${id}> Start your snowballing journey with /start !`);
+            return interaction.reply(`Hey <@${id}> Start your snowballing journey with </start:1393994261992575038> !`);
         }
 
         db.prepare('UPDATE snowball SET snowball = snowball + 3, coin = coin + 100 WHERE user_id = ?').run(id);

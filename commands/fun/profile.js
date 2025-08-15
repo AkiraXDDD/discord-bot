@@ -34,7 +34,7 @@ module.exports = {
 
         if (!userData) {
             if (who.id === interaction.user.id) {
-                return interaction.reply(`Hey <@${interaction.user.id}> Start your snowballing journey with /start !`);
+                return interaction.reply(`Hey <@${interaction.user.id}> Start your snowballing journey with </start:1393994261992575038> !`);
             } else {
                 return interaction.reply("Hey that user hasn't started their snowballing journey yet!");
             }
